@@ -1,0 +1,66 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}TOP - Dpro{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="video">
+    <p>ほんがすきな<br>あなたへ</p>
+    <img id="bg-video" src="{% static 'images/home/lib.png' %}" loop autoplay muted playsinline></img>
+</div>
+
+<section id="pickup">
+    <div class="parent-sec-title">
+      <h2 class="sec-title">PICK UP</h2>
+    </div>
+    <ul class="slick-area">
+    </ul>
+</section>
+
+<section id="feature">
+    <div class="parent-sec-title">
+      <h2 class="sec-title">FEATURE</h2>
+    </div>
+    <div class="grid">
+        {% for i in "123456789" %}
+            <div class="item">
+                <img class="fadein" src="{% static 'img/feature'|add:i|add:'.jpg' %}" alt="Feature Image {{ i }}">
+                <div class="item-content">
+                    <p class="item-cat">Category</p>
+                    <p class="item-text">テキスト</p>
+                    <p class="item-date">XXX年XX月XX日</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="contact">
+    <div class="parent-sec-title">
+      <h2 class="sec-title">CONTACT</h2>
+    </div>
+    <div class="content">
+        <div class="contact-info">
+            <p></p>
+            <p></p>
+        </div>
+        <div class="contact-form">
+            <form action="#">
+                <dl>
+                    <dt><label for="name">Name:</label></dt>
+                    <dd><input type="text" id="name" name="your-name"></dd>
+                    <dt><label for="email">Mail:</label></dt>
+                    <dd><input type="email" id="email" name="your-email"></dd>
+                    <dt><label for="message">Message:</label></dt>
+                    <dd><textarea id="message" name="your-message"></textarea></dd>
+                </dl>
+                <div class="button"><input type="submit" value="SEND"></div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

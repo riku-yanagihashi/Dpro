@@ -1,0 +1,89 @@
+{% extends 'VTDbank/base.html' %}
+
+{% block title %}収支履歴{% endblock %}
+
+{% block content %}
+
+{% load static %}
+{% load humanize %}
+<link rel="stylesheet" href="{% static 'css/VTDbank/logs.css' %}">
+
+<h1>損益ログ</h1>
+<ul class="list-group w-75">
+    {% for log in logs %}
+    <li class="list-group-item d-flex align-items-center">
+        <img src="" alt="up/down" class="up-down">
+        <div class="ms-2">
+            <span class="amount">{{ log.amount | intcomma }} VTD</span>
+            <p class="raw-amount d-none">{{ log.amount }}</p>
+            <br>
+            <span class="amount-gap ms-2">{{ log.amount | intcomma }}</span>
+        </div>
+        
+        <div class="ms-auto text-end">
+            
+            <span>{{ log.timestamp }}</span>
+            <br>
+            <span class="fw-bold">{{ log.description }}</span>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'VTDbank:allgraph' %}" target="_blank">グラフを表示</a>
+<!-- <iframe src="{% url 'VTDbank:allgraph' %}" frameborder="0" class="d-none"></iframe>
+<img src="" alt="graph" id="graph" class="position-fixed w-25 end-0"> -->
+
+<script>
+    function setUpDownLogo() {
+        const lis = document.querySelectorAll("li");
+        let old_amount = 0;
+        lis.forEach(element => {
+            const amount = parseInt(element.querySelector(".raw-amount").innerHTML);
+            let imgurl = "";
+            if (amount > old_amount) {
+                imgurl = "{% static 'images/VTDbank/Up.svg' %}";
+            } else if (amount < old_amount) {
+                imgurl = "{% static 'images/VTDbank/Down.svg' %}";
+            } else {
+                imgurl = "{% static 'images/VTDbank/Even.svg' %}";
+            }
+            element.querySelector(".up-down").src = imgurl;
+            old_amount = amount;
+        });
+    }
+    function setGapValue() {
+        const lis = document.querySelectorAll("li");
+        let old_amount = 0;
+        lis.forEach(element => {
+            const amount = parseInt(element.querySelector(".raw-amount").innerHTML);
+            let value = (amount-old_amount);
+            let color = "";
+            let sig = "";
+            if (value > 0) {
+                sig = "+";
+                color = "green";
+            } else if (value < 0) {
+                color = "red";
+            } else {
+                sig = "±";
+                color = "blue";
+            }
+            const amountGap = element.querySelector(".amount-gap")
+            amountGap.innerHTML = sig + value.toLocaleString();
+            amountGap.style = `color: ${color};`
+            old_amount = amount;
+        });
+    }
+
+    setUpDownLogo()
+    setGapValue()
+
+    const graph = document.getElementById("graph");
+    function LoadGraph(b64) {
+        graph.src = b64;
+    }
+
+    window.scrollTo(0,document.body.scrollHeight);
+</script>
+{% endblock %}
