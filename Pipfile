@@ -10,6 +10,7 @@ django-widget-tweaks = "*"
 pytz = "*"
 japanize-matplotlib = "*"
 setuptools = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
