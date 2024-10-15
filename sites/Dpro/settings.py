@@ -40,14 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     "widget_tweaks",
+    'accounts',
     'home',
 ]
 
 NUMBER_GROUPING = 3
 
-AUTH_USER_MODEL = "accounts.User"
 
-LOGIN_REDIRECT_URL = "accounts:index"
+# AUTH_USER_MODEL = "accounts.User"
+
+LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "accounts:login"
 
 MIDDLEWARE = [
@@ -88,7 +90,7 @@ WSGI_APPLICATION = 'Dpro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'prodb',
+        'NAME': 'dprodb',
         'USER': 'riku',
         'PASSWORD': 'dpro.pass',
         'HOST': 'localhost',  # ローカルの場合

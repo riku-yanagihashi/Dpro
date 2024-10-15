@@ -1,0 +1,19 @@
+<!-- accounts/templates/accounts/index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ホーム</title>
+</head>
+<body>
+    <h1>ようこそ、{{ user.username }}さん！</h1>
+    <p>これはログイン後のホームページです。</p>
+
+    <!-- ログアウトフォーム -->
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">ログアウト</button>
+    </form>
+
+</body>
+</html>
