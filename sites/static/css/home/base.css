@@ -104,6 +104,16 @@ li {
     padding: 20px 0;
     border-bottom: solid 1px #fff;
 }
+.nav-menu li a {
+    color: white; /* 通常時の文字色 */
+    transition: color 0.5s ease, -webkit-text-fill-color 0.5s ease;
+}
+
+.nav-menu li a:hover {
+    background: linear-gradient(90deg, #b39855, #fff9e6, #b39855);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* 文字の色がグラデーションに変わる */
+}
 #navi ul.nav-sns li {
     padding: 5px 0;
 }

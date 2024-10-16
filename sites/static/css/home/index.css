@@ -31,6 +31,27 @@
     margin: 0 auto; /* 中央揃え */
     line-height: 1.2; /* 改行時の行間を調整 */
 }
+#video .styled-button {
+    position: absolute;
+    bottom: 10%; /* ボタンの縦位置 */
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.1); /* 背景を薄く透明に */
+    color: #ffffff;
+    font-size: 24px;
+    font-family: "Hannari", serif;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    z-index: 100;
+    transition: background-color 0.3s, color 0.3s; /* スムーズなホバーエフェクト */
+}
+
+#video .styled-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 600px) {
     #bg-video {
         height: 100vh;
