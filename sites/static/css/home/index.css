@@ -82,40 +82,68 @@
 #feature {
     max-width: 1240px;
     padding: 100px 16px 50px 16px;
-    margin: -50px auto 10px auto;
+    margin: 0 auto;
 }
+
 #feature .grid {
     display: grid;
     gap: 26px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-#feature .grid .item {
-    transition: all 0.3s ease;
+
+#feature .item {
+    background-color: #1d262e;
+    border-radius: 10px;
     box-shadow: 0 0 8px 4px #ccc;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
-#feature .grid .item img {
-    vertical-align: top;
+
+#feature .item img {
+    width: 100%;
+    object-fit: cover;
+    height: 200px;
 }
-#feature .grid .item-content {
-    padding: 30px;
+
+#feature .item-content {
+    padding: 20px;
+    text-align: center;
 }
-#feature .grid .item-cat {
-    font-size: 0.75rem;
+
+#feature .item-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#feature .item-content p {
+    font-size: 1rem;
     margin-bottom: 20px;
+    color: #ccc;
 }
-#feature .grid .item-text {
-    font-weight: bold;
-    margin-bottom: 20px;
+
+#feature .styled-button {
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
 }
-#feature .grid .item-date {
-    font-size: 0.75rem;
-    text-align: right;
+
+#feature .styled-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f0f0f0;
 }
+
+/* Responsive Design for Small Screens */
 @media screen and (max-width: 600px) {
     #feature {
         padding: 80px 16px;
     }
-    #feature .grid .item-content {
+    #feature .item-content {
         padding: 16px;
     }
 }

@@ -1,0 +1,117 @@
+/* Reset and Basic Styles */
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    word-break: normal;
+}
+*, *:before, *:after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+    color: white;
+}
+body {
+    background: linear-gradient(90deg, #1D262E 0%, #08355d 50%);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+}
+li {
+    list-style: none;
+}
+
+.site-title {
+    line-height: 1px;
+}
+.site-title a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.grid {
+    text-align: center;
+}
+
+/* Header */
+#header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 40px;
+    position: fixed;
+    z-index: 101;
+    background-color: transparent; 
+}
+#navi {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    bottom: 0;
+    width: 300px;
+    color: #fff;
+    padding: 60px 25px;
+    background-color: #121212;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transition: all .5s;
+    z-index: 20;
+    opacity: 0;
+}
+#navi a {
+    color: #fff;
+}
+.open #navi {
+    left: 0;
+    opacity: 1;
+}
+#navi ul.nav-menu {
+    margin-bottom: 60px;
+    border-top: solid 1px #fff;
+}
+#navi ul.nav-menu li {
+    position: relative;
+    padding: 20px 0;
+    border-bottom: solid 1px #fff;
+}
+.nav-menu li a {
+    color: white;
+    transition: color 0.5s ease, -webkit-text-fill-color 0.5s ease;
+}
+
+.nav-menu li a:hover {
+    background: linear-gradient(90deg, #b39855, #fff9e6, #b39855);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Footer */
+#footer {
+    color: #fff;
+    background-color: #121212;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.75rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    #header {
+        padding: 20px 16px;
+    }
+    .toggle_btn {
+        right: 20px;
+    }
+}
+

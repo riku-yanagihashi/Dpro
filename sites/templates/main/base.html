@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dpro{% endblock %}</title>
+    
+    <!-- リセットCSSと外部スタイル -->
+    <link rel="icon" href="{% static 'images/home/favicon.ico' %}">
+    
+    <!-- プロジェクトの基本CSS -->
+    <link rel="stylesheet" href="{% static 'css/main/base.css' %}">
+
+    <!--はんなり明朝フォント-->
+    <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header id="header">
+        <h1 class="site-title">
+            <a href="#">Dpro</a>
+        </h1>
+    </header>
+
+    <main id="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer id="footer">
+        <p>&copy; Dpro</p>
+    </footer>
+
+    <!-- スクリプト -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="{% static 'js/home/index.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+

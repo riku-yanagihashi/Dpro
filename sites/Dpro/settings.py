@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-c16^1r##09$+k$a8s=6rjgb$ctihgu$efpcnqz*b4w05lsm!&9'
 
+GOOGLE_BOOKS_API_KEY= 'AIzaSyB8cpqf_6umrlXUCRYJ3NmkDJpHQ2g_Xvo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

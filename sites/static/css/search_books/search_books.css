@@ -1,0 +1,45 @@
+.search-container {
+    text-align: center;
+    padding: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.book-results {
+    margin-top: 30px;
+}
+
+.book-results ul {
+    list-style: none;
+    padding: 0;
+}
+
+.book-results li {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.book-results img {
+    max-width: 150px;
+    display: block;
+    margin: 10px auto;
+}
+
+.book-results h3 {
+    font-size: 24px;
+}
+
+.book-results p {
+    font-size: 16px;
+}

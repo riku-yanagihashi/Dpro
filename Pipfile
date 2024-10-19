@@ -11,6 +11,7 @@ pytz = "*"
 japanize-matplotlib = "*"
 setuptools = "*"
 psycopg2-binary = "*"
+requests = "*"
 
 [dev-packages]
 
