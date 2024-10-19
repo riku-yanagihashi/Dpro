@@ -10,7 +10,7 @@
     <p>これはログイン後のホームページです。</p>
 
     <!-- ログアウトフォーム -->
-    <form method="post" action="{% url 'logout' %}">
+    <form method="post" action="{% url 'accounts:logout' %}">
         {% csrf_token %}
         <button type="submit">ログアウト</button>
     </form>

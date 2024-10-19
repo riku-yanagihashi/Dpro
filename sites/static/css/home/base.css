@@ -17,6 +17,7 @@ body {
     line-height: 1.7;
     margin: 0;
     padding: 0;
+    overscroll-behavior: none;
     overflow-x: hidden;
 }
 a {
@@ -69,7 +70,7 @@ li {
     padding: 40px 40px;
     position: fixed;
     z-index: 101;
-    background-color: #111;
+    background-color: transparent; 
 }
 #navi {
     display: block;

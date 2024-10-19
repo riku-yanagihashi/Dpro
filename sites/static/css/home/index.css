@@ -1,12 +1,11 @@
 /* Main Layout */
 #main {
-    padding-top: 115px;
 }
 
 /* Video Section */
 #bg-video {
     width: 100%;
-    max-height: 700px;
+    max-height: 815px;
     object-fit: cover;
     filter: brightness(0.7); 
 }
@@ -16,7 +15,7 @@
     display: flex;
     align-items: center; /* 垂直方向の中央配置 */
     justify-content: center; /* 水平方向の中央配置 */
-    height: 700px; /* 画像の高さに合わせる */
+    height: 815px; /* 画像の高さに合わせる */
     overflow: hidden; /* 不要なスクロールを防ぐ */
 }
 
