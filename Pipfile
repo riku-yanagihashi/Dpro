@@ -12,6 +12,7 @@ japanize-matplotlib = "*"
 setuptools = "*"
 psycopg2-binary = "*"
 requests = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

@@ -1,0 +1,114 @@
+/* Base Styles */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #1c1c1e; /* 深い黒 */
+    color: #f0f0f0; /* 明るい白 */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #000000; /* 完全な黒 */
+    padding: 20px 0;
+    border-bottom: 2px solid #555;
+}
+
+header h1 {
+    font-family: 'Garamond', serif;
+    font-size: 2.8rem;
+    color: #f0f0f0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+header h1 a {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.main-nav ul li a:hover {
+    background-color: linear-gradient(45deg, #d4af37, #bfa128); /* 金色のグラデーション */
+    color: #1c1c1e;
+}
+
+/* Hamburger Menu */
+.toggle_btn {
+    display: none;
+    cursor: pointer;
+}
+
+.toggle_btn span {
+    height: 3px;
+    width: 30px;
+    background: #f0f0f0;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+#mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+footer {
+    background-color: #1c1c1e;
+    color: #888;
+    padding: 20px;
+    border-top: 1px solid #555;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+    color: #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-nav ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    .toggle_btn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-nav ul.show {
+        display: flex;
+    }
+}
+

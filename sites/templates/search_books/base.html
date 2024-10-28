@@ -5,12 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Dpro Book Search{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'search_books/base.css' %}">
-    <link rel="stylesheet" href="{% static 'search_books/search_books.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search_books/base.css' %}">
+
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     <header>
-        <h1>Book Search Application</h1>
+        <div class="nav-container">
+            <h1 class="site-title">
+                <a href="/">Find Book</a>
+            </h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">TOP</a></li>
+                    <li><a href="/logout/">ログアウト</a></li>
+                </ul>
+            </nav>
+            <div class="toggle_btn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div id="mask"></div>
     </header>
 
     <main>
@@ -20,6 +35,20 @@
     <footer>
         <p>&copy; 2024 Book Search</p>
     </footer>
+
+    <script>
+        // ハンバーガーメニューの操作
+        document.querySelector('.toggle_btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.main-nav').classList.toggle('active');
+            document.getElementById('mask').classList.toggle('active');
+        });
+
+        document.getElementById('mask').addEventListener('click', function() {
+            this.classList.remove('active');
+            document.querySelector('.toggle_btn').classList.remove('active');
+            document.querySelector('.main-nav').classList.remove('active');
+        });
+    </script>
 </body>
 </html>
-

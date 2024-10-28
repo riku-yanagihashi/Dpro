@@ -1,27 +1,32 @@
 {% extends "search_books/base.html" %}
-
+{% load static %}
 {% block title %}Book Search{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/search_books/search_books.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="search-container">
-        <h1>本を検索する</h1>
-    <form method="GET" action="{% url 'search_books:search_books' %}">
-        <input type="text" name="query" placeholder="本を検索" value="{{ query }}">
-        <button type="submit">検索</button>
-    </form>
+        <h1>Find Your Next Great Read</h1>
+        <form method="GET" action="{% url 'search_books:search_books' %}">
+            <input type="text" name="query" placeholder="Search for a book..." value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
 
-    {% if books %}
-        <ul>
-            {% for book in books %}
-                <li>
-                    <h2>{{ book.volumeInfo.title }}</h2>
-                    <p>{{ book.volumeInfo.authors|join:", " }}</p>
-                    <p>{{ book.volumeInfo.publishedDate }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>本が見つかりませんでした。</p>
-    {% endif %}
-</div>
-{% endblock %}
+        <div class="book-results">
+            {% if books %}
+                <ul>
+                    {% for book in books %}
+                        <li class="book-card">
+                            <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="{{ book.volumeInfo.title }}">
+                            <h3>{{ book.volumeInfo.title }}</h3>
+                            <p>Author: {{ book.volumeInfo.authors|join:", " }}</p>
+                            <p>Published: {{ book.volumeInfo.publishedDate }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No books found.</p>
+            {% endif %}
+{% endblock %}     
