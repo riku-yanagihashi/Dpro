@@ -10,14 +10,14 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header>
+    <header class="header-transparent">
         <div class="nav-container">
             <h1 class="site-title">
-                <a href="/">Find Book</a>
+                <a href="#">Find Book</a>
             </h1>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="/">TOP</a></li>
+                    <li><a href="/">トップ</a></li>
                     <li><a href="/logout/">ログアウト</a></li>
                 </ul>
             </nav>
@@ -36,19 +36,12 @@
         <p>&copy; 2024 Book Search</p>
     </footer>
 
-    <script>
-        // ハンバーガーメニューの操作
-        document.querySelector('.toggle_btn').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.main-nav').classList.toggle('active');
-            document.getElementById('mask').classList.toggle('active');
-        });
-
-        document.getElementById('mask').addEventListener('click', function() {
-            this.classList.remove('active');
-            document.querySelector('.toggle_btn').classList.remove('active');
-            document.querySelector('.main-nav').classList.remove('active');
-        });
-    </script>
+    
+  <!--スクリプトの読み込み-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="{% static 'js/search_books/filter_menu.js' %}"></script>
+    <script src="{% static 'js/search_books/header.js' %}"></script>
+    <script src="{% static 'js/scroll.js' %}"></script>
 </body>
 </html>

@@ -1,9 +1,23 @@
-/* Main Layout */
+.contens {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh; /* 各セクションがビュー全体を占めるように */
+}
 
-/* Video Section */
-#bg-video {
+/* 各セクションのスナップ設定 */
+#video,
+#pickup,
+#feature,
+#contact {
+  scroll-snap-align: start;
+  height: 100vh; /* 各セクションが画面いっぱいに表示されるように */
+}
+
+/* 画像プロパティ*/
+#bg-img {
+    z-index: -1;
     width: 100%;
-    max-height: 815px;
+    height: 100vh;
     object-fit: cover;
     filter: brightness(0.7); 
 }
@@ -13,8 +27,12 @@
     display: flex;
     align-items: center; /* 垂直方向の中央配置 */
     justify-content: center; /* 水平方向の中央配置 */
-    height: 815px; /* 画像の高さに合わせる */
     overflow: hidden; /* 不要なスクロールを防ぐ */
+}
+
+#video #bg-img {
+  max-width: 120%;
+  height: auto;
 }
 
 #video p {
@@ -50,7 +68,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    #bg-video {
+    #bg-img {
         height: 100vh;
         object-fit: cover;
     }
@@ -59,8 +77,14 @@
 /* Pickup Section */
 #pickup {
     width: 100%;
-    padding: 100px 0 50px 0;
+    height: 100vh;
+
 }
+#pickup .sec-title {
+  position: absolute;
+  z-index: 100;
+}
+
 #pickup .slick-area {
     font-size: 0;
 }
@@ -78,40 +102,66 @@
 
 /* Feature Section */
 #feature {
-    max-width: 1240px;
+    position: relative;
     padding: 100px 16px 50px 16px;
     margin: 0 auto;
+    color: #ffffff;
+    overflow: hidden;
 }
 
+.feature-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#feature #bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.parent-sec-title,
+.grid {
+    position: relative;
+    z-index: 1; /* 背景よりも上に表示 */
+}
+
+/* Grid layout */
 #feature .grid {
     display: grid;
     gap: 26px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 1240px;
+    margin: 0 auto;
 }
 
 #feature .item {
-    background-color: #1d262e;
+    background-color: rgba(29, 38, 46, 0.9); /* 半透明で背景画像が透ける */
     border-radius: 10px;
-    box-shadow: 0 0 8px 4px #ccc;
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 #feature .item img {
     width: 100%;
-    object-fit: cover;
     height: 200px;
+    object-fit: cover;
 }
 
 #feature .item-content {
     padding: 20px;
     text-align: center;
+    color: #fff;
 }
 
 #feature .item-content h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #fff;
 }
 
 #feature .item-content p {
@@ -151,6 +201,7 @@
     color: #fff;
     background-color: #121212;
     padding: 50px 0;
+    height: 100vh;
 }
 #contact .content {
     max-width: 1240px;

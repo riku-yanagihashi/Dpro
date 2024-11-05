@@ -27,6 +27,34 @@ header h1 a {
     text-decoration: none;
 }
 
+/* 固定ヘッダースタイル */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 背景を半透明に設定 */
+    z-index: 1000;
+    transition: background 0.3s ease; /* スムーズな背景変化 */
+}
+
+.header-transparent {
+    background: transparent; /* 完全透明 */
+}
+
+.header-placeholder {
+    display: none;
+    height: 0;
+    visibility: hidden;
+}
+
+.header-fixed + .header-placeholder {
+    display: block;
+    visibility: visible;
+}
+
+
+
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -42,6 +70,7 @@ header h1 a {
     gap: 20px;
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 .main-nav ul li a {
@@ -56,6 +85,11 @@ header h1 a {
 .main-nav ul li a:hover {
     background-color: linear-gradient(45deg, #d4af37, #bfa128); /* 金色のグラデーション */
     color: #1c1c1e;
+}
+
+/* スクロールしてheader-fixedが追加された時のボタンのスタイル */
+.header-fixed .main-nav ul li a:hover {
+    color: #696969; /* ホバー時のテキスト色 */
 }
 
 /* Hamburger Menu */

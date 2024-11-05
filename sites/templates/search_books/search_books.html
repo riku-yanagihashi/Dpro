@@ -7,26 +7,63 @@
 {% endblock %}
 
 {% block content %}
-    <div class="search-container">
-        <h1>Find Your Next Great Read</h1>
-        <form method="GET" action="{% url 'search_books:search_books' %}">
-            <input type="text" name="query" placeholder="Search for a book..." value="{{ query }}">
-            <button type="submit">Search</button>
-        </form>
+<div class="search-container">
+    <h1>キーワードから本を検索</h1>
+    <form method="GET" action="{% url 'search_books:search_books' %}">
+        <input type="text" name="query" placeholder="見つけたい本のキーワードを入力" value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
 
-        <div class="book-results">
-            {% if books %}
-                <ul>
-                    {% for book in books %}
-                        <li class="book-card">
-                            <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="{{ book.volumeInfo.title }}">
-                            <h3>{{ book.volumeInfo.title }}</h3>
-                            <p>Author: {{ book.volumeInfo.authors|join:", " }}</p>
-                            <p>Published: {{ book.volumeInfo.publishedDate }}</p>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No books found.</p>
-            {% endif %}
-{% endblock %}     
+    <!-- ハンバーガーメニュー -->
+    <div class="hamburger-menu" onclick="toggleFilterMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- フィルターメニュー -->
+    <div id="filter-menu" class="filter-menu">
+        <h2>フィルター & 並び替えオプション</h2>
+        <form method="GET" action="{% url 'search_books:search_books' %}">
+            <input type="hidden" name="query" value="{{ query }}">
+
+            <label for="sort">並び順:</label>
+            <select name="sort" id="sort">
+                <option value="relevance" {% if sort == "relevance" %}selected{% endif %}>関連順</option>
+                <option value="newest" {% if sort == "newest" %}selected{% endif %}>新しい順</option>
+            </select>
+
+            <label for="language">言語:</label>
+            <select name="language" id="language">
+                <option value="">すべて</option>
+                <option value="en" {% if language == "en" %}selected{% endif %}>英語</option>
+                <option value="ja" {% if language == "ja" %}selected{% endif %}>日本語</option>
+            </select>
+
+            <button type="submit">フィルターを適用</button>
+        </form>
+    </div>
+
+    <!-- 検索結果表示 -->
+    <div class="book-results">
+        {% if books %}
+            <ul>
+                {% for book in books %}
+                    <li class="book-card">
+                        <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="{{ book.volumeInfo.title }}">
+                        <h3>{{ book.volumeInfo.title }}</h3>
+                        <p>Author: {{ book.volumeInfo.authors|join:", " }}</p>
+                        <p>Published: {{ book.volumeInfo.publishedDate }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No books found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/search_books/filter_menu.js' %}"></script>
+{% endblock %}

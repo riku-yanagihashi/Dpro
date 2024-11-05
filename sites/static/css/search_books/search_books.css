@@ -6,9 +6,19 @@
 
 .search-container h1 {
     font-size: 2.5rem;
-    color: #bfa128; /* 金色 */
+    color: #bfa128;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
+.search-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Input and Button Styling */
 .search-container input[type="text"] {
     padding: 15px 20px;
     font-size: 18px;
@@ -43,15 +53,94 @@
     color: #1c1c1e;
 }
 
+/* Dropdowns */
+.search-container select {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #2e2e2f;
+    color: #f0f0f0;
+    border: 1px solid #555;
+    outline: none;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    cursor: pointer;
+    width: 30px;
+    margin-top: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #f0f0f0;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* Filter Menu Styling */
+.filter-menu {
+    display: none;
+    background-color: #2e2e2f;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    color: #f0f0f0;
+    max-width: 500px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.filter-menu h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #bfa128;
+}
+
+.filter-menu label,
+.filter-menu select,
+.filter-menu button {
+    font-size: 1rem;
+    color: #f0f0f0;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+}
+
+.filter-menu button {
+    background-color: #1e1e1f;
+    color: #d4af37;
+    border: 2px solid #d4af37;
+    padding: 12px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.filter-menu button:hover {
+    background-color: #d4af37;
+    color: #1c1c1e;
+}
+
 /* Book Results */
 .book-results {
     margin-top: 50px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 50px auto;
 }
 
 .book-results ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 5%;
+    padding: 0;
+    list-style: none;
 }
 
 .book-results .book-card {

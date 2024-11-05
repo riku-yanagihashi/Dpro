@@ -8,74 +8,81 @@
 {% endblock %}
 
 {% block content %}
-<div id="video">
-    <p>ほんがすきな<br>あなたへ</p>
-    <img id="bg-video" src="{% static 'images/home/lib.png' %}" loop autoplay muted playsinline></img>
-    <a href="{% url 'main:index' %}" class="styled-button">詳しく見る</a>
+<div class="contens">
+    <div id="video">
+        <p>ほんがすきな<br>あなたへ</p>
+        <img id="bg-img" src="{% static 'images/home/lib.png' %}" loop autoplay muted playsinline></img>
+        <a href="{% url 'main:index' %}" class="styled-button">詳しく見る</a>
+    </div>
+
+
+    <section id="pickup">
+        <div class="parent-sec-title">
+          <h2 class="sec-title">PICK UP</h2>
+        </div>
+        <img id="bg-img" src="{% static 'images/home/pickup.png' %}" loop autoplay muted playsinline></img>
+        <ul class="slick-area">
+        </ul>
+    </section>
+
+    <section id="feature">
+        <div class="feature-background">
+            <img id="bg-img" src="{% static 'images/home/pickup.png' %}" alt="Background Image">
+        </div>
+        <div class="parent-sec-title">
+            <h2 class="sec-title">FEATURE</h2>
+        </div>
+        <div class="grid">
+            <div class="item">
+                <img src="{% static 'images/feature/book_search.png' %}" alt="Feature 1">
+                <div class="item-content">
+                    <h3>本を見つける</h3>
+                    <p>好きな本を見つける時に</p>
+                    <a href="{% url 'search_books:index'%}" class="styled-button">詳しく見る</a>
+                </div>
+            </div>
+            <div class="item">
+                <img src="{% static 'images/feature/ai_book.jpg' %}" alt="Feature 2">
+                <div class="item-content">
+                    <h3>BookMind</h3>
+                    <p>あなたの読みたい本が見つかる</p>
+                    <a href="#" class="styled-button">詳しく見る</a>
+                </div>
+            </div>
+            <div class="item">
+                <img src="{% static 'images/feature/book_chat.jpg' %}" alt="Feature 3">
+                <div class="item-content">
+                    <h3>PageLink</h3>
+                    <p>本が好きな仲間を見つけるチャットツール的</p>
+                    <a href="#" class="styled-button">詳しく見る</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="parent-sec-title">
+          <h2 class="sec-title">CONTACT</h2>
+        </div>
+        <div class="content">
+            <div class="contact-info">
+                <p></p>
+                <p></p>
+            </div>
+            <div class="contact-form">
+                <form action="#">
+                    <dl>
+                        <dt><label for="name">Name:</label></dt>
+                        <dd><input type="text" id="name" name="your-name"></dd>
+                        <dt><label for="email">Mail:</label></dt>
+                        <dd><input type="email" id="email" name="your-email"></dd>
+                        <dt><label for="message">Message:</label></dt>
+                        <dd><textarea id="message" name="your-message"></textarea></dd>
+                    </dl>
+                    <div class="button"><input type="submit" value="SEND"></div>
+                </form>
+            </div>
+        </div>
+    </section>
 </div>
-
-<section id="pickup">
-    <div class="parent-sec-title">
-      <h2 class="sec-title">PICK UP</h2>
-    </div>
-    <ul class="slick-area">
-    </ul>
-</section>
-
-<section id="feature">
-    <div class="parent-sec-title">
-      <h2 class="sec-title">FEATURE</h2>
-    </div>
-    <div class="grid">
-        <div class="item">
-            <img src="{% static 'images/feature/book_search.png' %}" alt="Feature 1">
-            <div class="item-content">
-                <h3>本を見つける</h3>
-                <p>好きな本を見つける時に</p>
-        <a href="{% url 'search_books:index'%}" class="styled-button">詳しく見る</a>
-            </div>
-        </div>
-        <div class="item">
-            <img src="{% static 'images/feature/ai_book.jpg' %}" alt="Feature 2">
-            <div class="item-content">
-                <h3>BookMind</h3>
-                <p>AIがあなたの特徴から興味のありそうな本を検索します</p>
-                <a href="#" class="styled-button">詳しく見る</a>
-            </div>
-        </div>
-        <div class="item">
-            <img src="{% static 'images/feature/book_chat.jpg' %}" alt="Feature 3">
-            <div class="item-content">
-                <h3>PageLink</h3>
-                <p>本が好きな仲間を見つけるチャットツール的</p>
-                <a href="#" class="styled-button">詳しく見る</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contact">
-    <div class="parent-sec-title">
-      <h2 class="sec-title">CONTACT</h2>
-    </div>
-    <div class="content">
-        <div class="contact-info">
-            <p></p>
-            <p></p>
-        </div>
-        <div class="contact-form">
-            <form action="#">
-                <dl>
-                    <dt><label for="name">Name:</label></dt>
-                    <dd><input type="text" id="name" name="your-name"></dd>
-                    <dt><label for="email">Mail:</label></dt>
-                    <dd><input type="email" id="email" name="your-email"></dd>
-                    <dt><label for="message">Message:</label></dt>
-                    <dd><textarea id="message" name="your-message"></textarea></dd>
-                </dl>
-                <div class="button"><input type="submit" value="SEND"></div>
-            </form>
-        </div>
-    </div>
-</section>
 {% endblock %}

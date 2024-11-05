@@ -45,14 +45,13 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer id="footer">
-        <p>&copy; Dpro</p>
-    </footer>
 
     <!-- スクリプト -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="{% static 'js/home/index.js' %}"></script>
+    <script src="{% static 'js/home/scroll-anime.js' %}"></script>
+    <script src="{% static 'js/scroll.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>
