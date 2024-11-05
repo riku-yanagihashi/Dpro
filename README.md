@@ -1,3 +1,3 @@
 # Dpro
 
-![エビフライトライアングル](/sites/static/images/home/lib.png)
+![エビフライトライアングル](/sites/static/images/home/pickup.png)
