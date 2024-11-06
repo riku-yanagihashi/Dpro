@@ -22,29 +22,40 @@
     filter: brightness(0.7); 
 }
 
-#video {
-    position: relative;
-    display: flex;
-    align-items: center; /* 垂直方向の中央配置 */
-    justify-content: center; /* 水平方向の中央配置 */
-    overflow: hidden; /* 不要なスクロールを防ぐ */
-}
-
 #video #bg-img {
   max-width: 120%;
   height: auto;
 }
 
+#video {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 100vh; /* セクションが画面全体を占める */
+}
+
+
+
 #video p {
-    z-index: 100;
+    opacity: 0;
+    transform: translateY(20px); /* 少し下からスライドイン */
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
     position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(-20px); /* 中央に配置し、フェードインアニメーション */
     color: white;
     font-family: "Hannari";
     font-size: 100px;
     text-align: center;
-    max-width: 80%; /* テキストの幅を画像内に収める */
-    margin: 0 auto; /* 中央揃え */
-    line-height: 1.2; /* 改行時の行間を調整 */
+    line-height: 1.2;
+}
+
+#video p.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0); /* フェードインで元の位置へ */
 }
 #video .styled-button {
     position: absolute;
@@ -76,27 +87,102 @@
 
 /* Pickup Section */
 #pickup {
+    position: relative;
     width: 100%;
     height: 100vh;
-
+    overflow: hidden;
 }
+
 #pickup .sec-title {
-  position: absolute;
-  z-index: 100;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#pickup #bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5); /* 背景画像の明るさを少し暗く */
+    z-index: 1;
 }
 
 #pickup .slick-area {
-    font-size: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 3; /* 背景画像より前に表示 */
+    padding: 100px 20px 0;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-#pickup .slick-area li {
-    padding: 0 30px;
+
+#pickup .slick-area .item {
+    background-color: rgba(29, 38, 46, 0.9); /* 半透明で背景画像が透ける */
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: calc(33% - 20px); /* 3つのアイテムが並ぶように設定 */
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-@media screen and (max-width: 600px) {
-    #pickup {
-        padding: 80px 0;
+
+#pickup .slick-area .item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+#pickup .slick-area .item h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+#pickup .slick-area .item p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+#pickup .slick-area .styled-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#pickup .slick-area .styled-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #1c1c1e;
+}
+
+/* Responsive Design for Smaller Screens */
+@media screen and (max-width: 768px) {
+    #pickup .slick-area .item {
+        width: calc(50% - 20px); /* 2つ並びに変更 */
     }
-    #pickup .slick-area li {
-        padding: 0 20px;
+}
+
+@media screen and (max-width: 480px) {
+    #pickup .slick-area .item {
+        width: 100%; /* 1つずつ表示 */
     }
 }
 

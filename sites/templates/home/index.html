@@ -18,10 +18,20 @@
 
     <section id="pickup">
         <div class="parent-sec-title">
-          <h2 class="sec-title">PICK UP</h2>
+            <h2 class="sec-title">PICK UP</h2>
         </div>
-        <img id="bg-img" src="{% static 'images/home/pickup.png' %}" loop autoplay muted playsinline></img>
+        <img id="bg-img" src="{% static 'images/home/pickup.png' %}" alt="Background Image">
         <ul class="slick-area">
+          {% for page in top_pages %}
+          <li class="item">
+              <div class="item-content">
+                  <h3>{{ page.app_name }} - {{ page.page_name }}</h3>
+                  <p>Views: {{ page.views }}</p>
+                  <a href="{{ page.url }}" class="styled-button">詳しく見る</a>
+              </div>
+          </li>
+          {% endfor %}
+
         </ul>
     </section>
 

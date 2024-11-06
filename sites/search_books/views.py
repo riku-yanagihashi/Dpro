@@ -1,9 +1,12 @@
 import requests
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from home.utils import update_page_views
 
 @login_required(login_url='/accounts/login/')
 def index(request):
+    # 関数を使ってデータベースにデータを追加
+    update_page_views('search_books', 'search_books')
     return render(request, 'search_books/search_books.html')
 
 def search_books(request):
@@ -11,6 +14,7 @@ def search_books(request):
     sort = request.GET.get('sort', 'relevance')
     language = request.GET.get('language', '')
     books = []
+
 
     if query:
         api_key = 'AIzaSyB8cpqf_6umrlXUCRYJ3NmkDJpHQ2g_Xvo'
