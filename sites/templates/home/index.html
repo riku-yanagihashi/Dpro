@@ -5,6 +5,9 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/video.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/pickup.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/feature.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -21,18 +24,18 @@
             <h2 class="sec-title">PICK UP</h2>
         </div>
         <img id="bg-img" src="{% static 'images/home/pickup.png' %}" alt="Background Image">
-        <ul class="slick-area">
-          {% for page in top_pages %}
-          <li class="item">
-              <div class="item-content">
-                  <h3>{{ page.app_name }} - {{ page.page_name }}</h3>
-                  <p>Views: {{ page.views }}</p>
-                  <a href="{{ page.url }}" class="styled-button">詳しく見る</a>
-              </div>
-          </li>
-          {% endfor %}
-
-        </ul>
+        <div class="grid">
+            {% for page in top_pages %}
+            <div class="item">
+                <img src="{{ page.image_url }}" alt="{{ page.display_name }}" class="card-image"> <!-- 画像表示 -->
+                <div class="item-content">
+                    <h3>{{ page.display_name }}</h3>
+                    <p>{{ page.display_views }}</p>
+                    <a href="{{ page.url }}" class="styled-button">詳しく見る</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </section>
 
     <section id="feature">
@@ -46,7 +49,7 @@
             <div class="item">
                 <img src="{% static 'images/feature/book_search.png' %}" alt="Feature 1">
                 <div class="item-content">
-                    <h3>本を見つける</h3>
+                    <h3>Search Books</h3>
                     <p>好きな本を見つける時に</p>
                     <a href="{% url 'search_books:index'%}" class="styled-button">詳しく見る</a>
                 </div>
@@ -63,7 +66,7 @@
                 <img src="{% static 'images/feature/book_chat.jpg' %}" alt="Feature 3">
                 <div class="item-content">
                     <h3>PageLink</h3>
-                    <p>本が好きな仲間を見つけるチャットツール的</p>
+                    <p>本好き同士で集まる</p>
                     <a href="#" class="styled-button">詳しく見る</a>
                 </div>
             </div>
