@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}サイトタイトル{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/accounts/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <div class="underlay-photo"></div>
+    <div class="underlay-black"></div>
+</body>
+</html>

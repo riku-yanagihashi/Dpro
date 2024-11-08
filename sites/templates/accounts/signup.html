@@ -1,17 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'css/accounts/signup.css' %}">
 </head>
 <body>
-    <h2>サインアップ</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">登録</button>
-    </form>
-    <p>既にアカウントをお持ちですか？ <a href="{% url 'accounts:login' %}">ログイン</a></p>
+    <div class="form-container">
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <p class="login-text">
+                Signup
+            </p>
+
+            <!-- usernameフィールド -->
+            <input type="text" name="username" class="login-input" placeholder="Username" required autofocus>
+
+            <!-- emailフィールド -->
+            <input type="email" name="email" class="login-input" placeholder="Email" required>
+
+            <!-- password1フィールド -->
+            <input type="password" name="password1" class="login-input" placeholder="Password" required>
+
+            <!-- password2フィールド -->
+            <input type="password" name="password2" class="login-input" placeholder="Confirm Password" required>
+
+            <input type="submit" value="Sign Up" class="login-submit">
+        </form>
+        <div class="login-links">
+            <a href="{% url 'accounts:login' %}" class="login-signup">既にアカウントをお持ちの方はこちら</a>
+        </div>
+    </div>
+    <div class="underlay-photo"></div>
+    <div class="underlay-black"></div>
 </body>
 </html>
-

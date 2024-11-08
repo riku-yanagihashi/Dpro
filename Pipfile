@@ -13,6 +13,8 @@ setuptools = "*"
 psycopg2-binary = "*"
 requests = "*"
 python-dotenv = "*"
+django-sass-processor = "*"
+libsass = "*"
 
 [dev-packages]
 

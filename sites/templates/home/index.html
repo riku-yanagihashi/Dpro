@@ -14,7 +14,7 @@
 <div class="contens">
     <div id="video">
         <p>ほんがすきな<br>あなたへ</p>
-        <img id="bg-img" src="{% static 'images/home/lib.png' %}" loop autoplay muted playsinline></img>
+        <img id="bg-img" src="{% static 'images/home/books_lib.jpg' %}" loop autoplay muted playsinline></img>
         <a href="{% url 'main:index' %}" class="styled-button">詳しく見る</a>
     </div>
 
@@ -23,7 +23,7 @@
         <div class="parent-sec-title">
             <h2 class="sec-title">PICK UP</h2>
         </div>
-        <img id="bg-img" src="{% static 'images/home/pickup.png' %}" alt="Background Image">
+        <img id="bg-img" src="{% static 'images/home/pick.jpg' %}" alt="Background Image">
         <div class="grid">
             {% for page in top_pages %}
             <div class="item">
