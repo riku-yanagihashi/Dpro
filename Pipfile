@@ -16,8 +16,6 @@ python-dotenv = "*"
 django-sass-processor = "*"
 libsass = "*"
 
-
-
 [dev-packages]
 
 [requires]
