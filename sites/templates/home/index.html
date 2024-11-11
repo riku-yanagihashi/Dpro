@@ -8,9 +8,13 @@
 <link rel="stylesheet" href="{% static 'css/home/video.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/pickup.css' %}">
 <link rel="stylesheet" href="{% static 'css/home/feature.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/animation.css' %}">
+<link rel="stylesheet" href="{% static 'css/accounts/animation.css' %}">
+
 {% endblock %}
 
 {% block content %}
+
 <div class="contens">
     <div id="video">
         <p>ほんがすきな<br>あなたへ</p>
@@ -99,3 +103,12 @@
     </section>
 </div>
 {% endblock %}
+<script>
+    $(document).ready(function() {
+        // ページロード時の開くアニメーション
+        setTimeout(() => {
+            $('body').removeClass('page-is-changing');
+            $('.cd-loading-bar').removeClass('is-visible');
+        }, 800); // ページロード後の遅延時間を設定
+    });
+</script>
