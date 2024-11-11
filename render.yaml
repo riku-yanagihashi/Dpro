@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: dpro-web
+    env: python
+    region: singapore
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn Dpro.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        value: "sy7#ulx$x-@o=@1)bgcr%gzy)i3)2yp!qf*cc7h(x0jy#vdq#p" # シークレットキーを適切に設定
+      - key: DATABASE_URL
+        value: "postgresql://dpro_user:O30n4sswWiWxML5WdYfKw49uFGavN0Vx@dpg-cson6ll6l47c7392iak0-a.singapore-postgres.render.com/dprodb"  # RenderのDB接続URLを使用
+    plan: free
+    disk:
+      name: static
+      mountPath: /opt/render/project/src/Dpro/sites/static
+    staticPublishPath: /opt/render/project/src/Dpro/sites/static
+
+
