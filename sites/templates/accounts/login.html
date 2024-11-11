@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts/animation.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
+
+    <div class="redirect-container"></div>
     <div class="form-container">
-        <form class="login-form" method="post" action="{% url 'accounts:login' %}">
+        <form class="login-form" method="post" action="{% url 'accounts:login' %}" id="login-form">
             {% csrf_token %}
             <p class="login-text">
               Login
@@ -24,5 +28,6 @@
     </div>
     <div class="underlay-photo"></div>
     <div class="underlay-black"></div>
+    <script src="{% static 'js/accounts/login.js' %}"></script>
 </body>
 </html>
