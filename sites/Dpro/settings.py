@@ -100,17 +100,23 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Dpro.wsgi.application'
 
 
+# .envファイルをロード
+load_dotenv(os.path.join(BASE_DIR, '.env'))
+
+# DATABASES設定を環境変数から読み込み
+from urllib.parse import urlparse
+
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+db_url = urlparse(os.getenv("DATABASE_URL"))
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dprodb',
-        'USER': 'riku',
-        'PASSWORD': 'dpro.pass',
-        'HOST': 'localhost',  # ローカルの場合
-        'PORT': '5432',       # PostgreSQLのデフォルトポート
+        'NAME': db_url.path[1:],  # データベース名
+        'USER': db_url.username,   # ユーザー名
+        'PASSWORD': db_url.password,  # パスワード
+        'HOST': db_url.hostname,   # ホスト名
+        'PORT': db_url.port,       # ポート
     }
 }
 
