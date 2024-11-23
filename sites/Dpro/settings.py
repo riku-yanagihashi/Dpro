@@ -121,8 +121,8 @@ DATABASES = {
         'NAME': 'dprodb',
         'USER': 'riku',
         'PASSWORD': 'dpro.pass',
-        'HOST': 'localhost',  # ローカルの場合
-        'PORT': '5432',       # PostgreSQLのデフォルトポート
+        'HOST': 'db',  # コンテナ名に変更
+        'PORT': '5432',
     }
 }
 

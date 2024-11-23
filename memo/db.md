@@ -3,6 +3,6 @@ USER: riku
 pass: dpro.pass
 
 
-psql -U postgres -d dprodb
+docker exec -it postgres_db psql -U riku -d dprodb
 
 \dt
