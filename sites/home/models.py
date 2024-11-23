@@ -9,3 +9,14 @@ class PageView(models.Model):
 
     def __str__(self):
         return f"{self.app_name} - {self.page_name}: {self.views} views"
+
+
+class Inquiry(models.Model):
+    name = models.CharField(max_length=255, verbose_name="お名前")
+    email = models.EmailField(verbose_name="メールアドレス")
+    message = models.TextField(verbose_name="お問い合わせ内容")
+    submitted_at = models.DateTimeField(auto_now_add=True, verbose_name="送信日時")
+
+    def __str__(self):
+        return f"{self.name} ({self.email})"
+

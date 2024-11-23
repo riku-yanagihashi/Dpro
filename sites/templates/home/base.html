@@ -1,67 +1,130 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Dpro{% endblock %}</title>
-    <meta name="description" content="テキストテキストテキストテキストテキストテキストテキストテキスト">
+    <title>蔵書楽園 - Book Eden</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="本が好きな人同士で集まる">
     
     <!-- リセットCSSと外部スタイル -->
     <link rel="icon" href="{% static 'images/home/favicon.ico' %}">
     
     <!-- プロジェクトの基本CSS -->
-    <link rel="stylesheet" href="{% static 'css/home/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home/style.css' %}">
 
     <!--はんなり明朝フォント-->
     <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
 
     {% block extra_css %}{% endblock %}
 </head>
-<body class="expand-from-line">
-    <header id="header">
-        <h1 class="site-title">
-            <a href="#">Dpro</a>
-        </h1>
-        <nav id="navi">
-            <ul class="nav-menu">
-                <li><a href="#pickup">PICK UP</a></li>
-                <li><a href="#feature">FEATURE</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
-            <ul class="nav-sns">
-                <li>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'accounts:index' %}">アカウント</a>
-                    {% else %}
-                        <a href="{% url 'accounts:login' %}">ログイン</a>
-                    {% endif %}
-                </li>
-                <li>
-                    <form id="logout-form" method="post" action="{% url 'accounts:logout' %}" style="display:none;">
-                        {% csrf_token %}
-                    </form>
-                    <a href="#" onclick="document.getElementById('logout-form').submit(); return false;">
-                        ログアウト
-                    </a>
-                </li>
+<body class="home">
+    <!--▼▼▼▼▼ここから「ヘッダー」-->
+    <header>
 
-                <!-- 下段：一旦放置 -->
-                <!--<li><a href="#" target="_blank">Instagram</a></li>-->
-            </ul>
-        </nav>
-        <div class="toggle_btn">
-            <span></span><span></span><span></span>
-        </div>
-        <div id="mask"></div>
+    <h1 id="logo"><a href="{% url 'home' %}"><img src="{% static 'images/home/logo.svg' %}" alt="book_eden"></a></h1>
+
+    <nav>
+    <ul>
+    <li><a href="#kodawari">この場所は?</a></li>
+    <li><a href="#course">ツールのご案内</a>
+      <ul>
+      <li><a href="#sakutou">索灯</a></li>
+      <li><a href="#ensho">縁書</a></li>
+      <li><a href="#huuenn">風縁</a></li>
+      <li><a href="#tukuyomi">月詠</a></li>
+      </ul>
+    </li>
+    <li><a href="#koe">お客様の声</a></li>
+    <li><a href="#faq">よく頂く質問</a></li>
+    </ul>
+    </nav>
+
     </header>
 
-    <main id="main">
+    <!--▲▲▲▲▲ここまで「ヘッダー」-->
+
+    <main">
         {% block content %}{% endblock %}
     </main>
 
+    <!--▼▼▼▼▼ここから「フッター」-->
+    <footer>
+
+    <div class="text">
+
+    <div>
+    <h4>Company</h4>
+    <p>東京都世田谷区深沢4-12-9<br>
+    電話番号  03-2468-1357<br>
+    </p>
+    </div>
+
+    <div>
+    <h4>Follow Us</h4>
+    <ul class="icons">
+    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+    <li><a href="#"><i class="fab fa-line"></i></a></li>
+    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+    </div>
+
+    </div>
+
+    <div class="image">
+    <p class="logo"><img src="{% static 'images/home/logo_kazari.svg' %}" alt=""></p>
+    <small>&copy; Book Eden</small>
+    </div>
+
+    </footer>
+    <!--▲▲▲▲▲ここまで「フッター」-->
+
+    <!--テンプレートの著作。削除しないで下さい。-->
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+
+    </div>
+    <!--/#container-->
+
+    <!--開閉ボタン（ハンバーガーアイコン）-->
+    <div id="menubar_hdr">
+    <div class="menu-icon">
+    <span></span><span></span>
+    </div>
+    </div>
+
+    <!--開閉ブロック-->
+    <div id="menubar">
+
+    <nav>
+    <ul>
+    <li><a href="#kodawari">この場所は?</a></li>
+    <li><a href="#course">ツールのご案内</a>
+      <ul>
+      <li><a href="#sakutou">索灯</a></li>
+      <li><a href="#ensho">縁書</a></li>
+      <li><a href="#huuenn">風縁</a></li>
+      <li><a href="#tukuyomi">月詠</a></li>
+      </ul>
+    </li>
+    <li><a href="#koe">お客様の声</a></li>
+    <li><a href="#faq">よく頂く質問</a></li>
+    <li><a href="{% url 'form' %}">お問い合わせ</a></li>
+    <li><a href="#">ご相談</a></li>
+    </ul>
+    </nav>
+
+    <p>こちらのメニューでは空の場所をクリック、またはタップしても閉じません。<br>
+    メニューの右上にあるバツマークを押してお閉じください</p>
+
+    </div>
+    <!--/#menubar-->
 
     <!-- スクリプト -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+    <script src="{% static 'js/home/jquery.inview_set.js' %}"></script>
+    <script src="{% static 'js/home/main.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from .forms import InquiryForm  # InquiryForm を使用
 from .models import PageView
 
 def home(request):
@@ -21,3 +23,19 @@ def home(request):
         })
 
     return render(request, 'home/index.html', {'top_pages': top_pages})
+
+
+def form(request):
+    if request.method == "POST":
+        form = InquiryForm(request.POST)  # POST データをフォームにバインド
+        if form.is_valid():  # バリデーションを実行
+            form.save()  # フォームデータをデータベースに保存
+            return redirect('form_finish')  # 成功時のリダイレクト
+    else:
+        form = InquiryForm()  # 空のフォームを作成
+
+    return render(request, 'home/form.html', {'form': form})
+
+
+def form_finish(request):
+    return render(request, 'home/finish.html')

@@ -25,8 +25,6 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
 
-GOOGLE_BOOKS_API_KEY = os.getenv("GOOGLE_BOOKS_API_KEY", "")
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -43,11 +41,15 @@ except ImportError:
 
 GOOGLE_BOOKS_API_KEY= 'AIzaSyB8cpqf_6umrlXUCRYJ3NmkDJpHQ2g_Xvo'
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -116,11 +118,11 @@ db_url = urlparse(os.getenv("DATABASE_URL"))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': db_url.path[1:],  # データベース名
-        'USER': db_url.username,   # ユーザー名
-        'PASSWORD': db_url.password,  # パスワード
-        'HOST': db_url.hostname,   # ホスト名
-        'PORT': db_url.port,       # ポート
+        'NAME': 'dprodb',
+        'USER': 'riku',
+        'PASSWORD': 'dpro.pass',
+        'HOST': 'localhost',  # ローカルの場合
+        'PORT': '5432',       # PostgreSQLのデフォルトポート
     }
 }
 

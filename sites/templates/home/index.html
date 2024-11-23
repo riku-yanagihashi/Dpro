@@ -1,114 +1,342 @@
 {% extends "home/base.html" %}
 {% load static %}
-
-{% block title %}TOP - Dpro{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/home/index.css' %}">
-<link rel="stylesheet" href="{% static 'css/home/video.css' %}">
-<link rel="stylesheet" href="{% static 'css/home/pickup.css' %}">
-<link rel="stylesheet" href="{% static 'css/home/feature.css' %}">
-<link rel="stylesheet" href="{% static 'css/home/animation.css' %}">
-<link rel="stylesheet" href="{% static 'css/accounts/animation.css' %}">
-
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>LP（ランディングページ）向け 無料ホームページテンプレート tp_LP1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ここにサイト説明を入れます">
+<link rel="stylesheet" href="{% static 'css/home/style.css' %}">
+</head>
 
 {% block content %}
+<body class="home">
 
-<div class="contens">
-    <div id="video">
-        <p>ほんがすきな<br>あなたへ</p>
-        <img id="bg-img" src="{% static 'images/home/books_lib.jpg' %}" loop autoplay muted playsinline></img>
-        <a href="{% url 'main:index' %}" class="styled-button">詳しく見る</a>
-    </div>
+<div id="container">
 
 
-    <section id="pickup">
-        <div class="parent-sec-title">
-            <h2 class="sec-title">PICK UP</h2>
-        </div>
-        <img id="bg-img" src="{% static 'images/home/pick.jpg' %}" alt="Background Image">
-        <div class="grid">
-            {% for page in top_pages %}
-            <div class="item">
-                <img src="{{ page.image_url }}" alt="{{ page.display_name }}" class="card-image"> <!-- 画像表示 -->
-                <div class="item-content">
-                    <h3>{{ page.display_name }}</h3>
-                    <p>{{ page.display_views }}</p>
-                    <a href="{{ page.url }}" class="styled-button">詳しく見る</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
+<!--▼▼▼▼▼ここから画面右側の縦向きの「ご相談」のボタン-->
+<p id="btn-special"><a href="{% url 'accounts:login' %}" class="border"><i class="fa-solid fa-book-open"></i>読書を始める</a></p>
+<!--▲▲▲▲▲ここまで-->
 
-    <section id="feature">
-        <div class="feature-background">
-            <img id="bg-img" src="{% static 'images/home/pickup.png' %}" alt="Background Image">
-        </div>
-        <div class="parent-sec-title">
-            <h2 class="sec-title">FEATURE</h2>
-        </div>
-        <div class="grid">
-            <div class="item">
-                <img src="{% static 'images/feature/book_search.png' %}" alt="Feature 1">
-                <div class="item-content">
-                    <h3>Search Books</h3>
-                    <p>好きな本を見つける時に</p>
-                    <a href="{% url 'search_books:index'%}" class="styled-button">詳しく見る</a>
-                </div>
-            </div>
-            <div class="item">
-                <img src="{% static 'images/feature/ai_book.jpg' %}" alt="Feature 2">
-                <div class="item-content">
-                    <h3>BookMind</h3>
-                    <p>あなたの読みたい本が見つかる</p>
-                    <a href="#" class="styled-button">詳しく見る</a>
-                </div>
-            </div>
-            <div class="item">
-                <img src="{% static 'images/feature/book_chat.jpg' %}" alt="Feature 3">
-                <div class="item-content">
-                    <h3>PageLink</h3>
-                    <p>本好き同士で集まる</p>
-                    <a href="#" class="styled-button">詳しく見る</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--▼▼▼▼▼ここから「スライドショー」-->
+<div id="svg-box">
 
-    <section id="contact">
-        <div class="parent-sec-title">
-          <h2 class="sec-title">CONTACT</h2>
-        </div>
-        <div class="content">
-            <div class="contact-info">
-                <p></p>
-                <p></p>
-            </div>
-            <div class="contact-form">
-                <form action="#">
-                    <dl>
-                        <dt><label for="name">Name:</label></dt>
-                        <dd><input type="text" id="name" name="your-name"></dd>
-                        <dt><label for="email">Mail:</label></dt>
-                        <dd><input type="email" id="email" name="your-email"></dd>
-                        <dt><label for="message">Message:</label></dt>
-                        <dd><textarea id="message" name="your-message"></textarea></dd>
-                    </dl>
-                    <div class="button"><input type="submit" value="SEND"></div>
-                </form>
-            </div>
-        </div>
-    </section>
+<div class="slide-type1">
+
+<div class="slide img1">
+<a href="#"><img src="{% static 'images/home/1.jpg' %}" alt=""></a>
 </div>
+
+<div class="slide img2">
+<a href="#"><img src="{% static 'images/home/2.jpg' %}" alt=""></a>
+</div>
+
+<div class="slide img3">
+<a href="#"><img src="{% static 'images/home/3.jpg' %}" alt=""></a>
+</div>
+
+<!--インジケーターボタン（現在表示中ボタン）-->
+<div class="slide-indicators"></div>
+
+</div>
+<!--/.slide-type1-->
+
+<svg width="0" height="0" viewBox="0 0 1600 900">
+<defs>
+<clipPath id="myClip1" clipPathUnits="objectBoundingBox">
+<path transform="scale(0.000625,0.001111)" d="M244.6,20v64c0,11-9,20-20,20H19.6c-11,0-20,9-20,20v756c0,11,9,20,20,20h1560c11,0,20-9,20-20V20c0-11-9-20-20-20H264.6c-11,0-20,9-20,20Z">
+</clippath>
+</defs>
+</svg>
+
+</div>
+<!--▲▲▲▲▲ここまで「スライドショー」-->
+
+<main>
+
+<!--▼▼▼▼▼ここから「この場所は?」-->
+<section class="box1" id="kodawari">
+
+<p class="deco-text">Where Place?</p>
+<img src="{% static 'images/home/illust1.svg' %}" alt="" class="illust1">
+<img src="{% static 'images/home/illust2.svg' %}" alt="" class="illust2">
+
+<div class="text order1 blur">
+
+<h2><span class="main-text">この場所は?</span><span class="sub-text">Where Place?</span></h2>
+
+<p>ここは、言葉が紡ぐ無限の世界、その入口。誰かの思索が文字となり、誰かの夢が頁に描かれた、その痕跡が静かに佇む場所です。背表紙の間をそっと歩けば、聞こえてくるのは語られなかった物語の囁き。頁をめくれば、そこに広がるのは、かつて誰かが辿った想像の旅路。ここに集う本たちは、ただ読むためだけに存在するのではありません。それは、あなた自身の心を映し、新たな問いと答えを紡ぎ出すための、鏡のような存在なのです。</p>
+<p>この地に足を踏み入れたあなたは、すでに旅人です。蔵された書の一つひとつが灯台となり、あなたを未知なる地平へと誘います。見つけるべき本が、既にあなたを待っているかもしれません。そして、その一冊との出会いが、あなた自身の物語を新たに動かし始めることでしょう。この場所はただの「蔵」ではありません。それは、読む者の心に光を灯し、未来へ続く航路を照らすために存在しているのです。</p>
+
+<p class="btn1"><a href="#">View More</a></p>
+
+</div>
+<!--/.text-->
+
+<div class="image blur">
+<img src="{% static 'images/home/sample1.jpg' %}" alt="" class="speed1">
+<img src="{% static 'images/home/sample2.jpg' %}" alt="" class="speed2">
+</div>
+
+</section>
+<!--▲▲▲▲▲ここまで「この場所は?」-->
+
+<!--▼▼▼▼▼ここから「プランのご案内」-->
+<section class="logo-kazari padding-lr0" id="course">
+
+<div class="title-bg blur">
+<h2><span class="tate order1">本ツールのご案内</span><span class="yoko">Tool Information</span></h2>
+</div>
+
+<div class="list1 image1 up" id="sakutou">
+
+<div class="text">
+
+<h3><span class="large">索</span>灯<span>書の旅路を辿り、<br>未知の知識や物語に出会う瞬間を求めて</span></h3>
+<p>まるで深い森を彷徨う旅人のように、一冊一冊の背表紙に手を伸ばす。目に映る文字の羅列は、静かに語りかけてくる声のように、何か新しい世界への扉を開こうとしている。知識の欠片や物語の息吹が、隠された宝物のようにその中に眠っていることを知っているからこそ、一つの本との出会いが胸を高鳴らせる。選び取ったその一冊が、どんな新しい景色を見せてくれるのか、心の奥底で期待が膨らむ。</p>
+<p class="btn2"><a href="#">View More</a></p>
+
+</div>
+
+</div>
+<!--/.list1.image1-->
+
+<div class="list1 image2 up" id="ensho">
+
+<div class="text reverse">
+
+<h3><span class="large">縁</span>書<span>Book Match</span></h3>
+<p>ここは、書物の魂と人の心が交わり、新たな縁を紡ぎ出す場にございます。無数の背表紙が静かに佇むさまは、まるで時を超えて巡り合いを待つ者のよう。頁の奥に秘められし言の葉は、あなたが手を伸ばすその瞬間を、いとおしく待ち続けているのです。古の筆者が込めた想いと、読む者の心が響き合うとき、新たな物語が息吹くのを知るでしょう。</p>
+<p class="btn2"><a href="#">View More</a></p>
+
+</div>
+
+</div>
+<!--/.list1.image2-->
+
+<div class="list1 image3 up" id="huuenn">
+
+<div class="text">
+
+<h3><span class="large">風</span>縁<span>Wind Connection</span></h3>
+<p>これは、書の香に誘われし風が縁を結び、志を同じくする者どもをここに導く、不思議なる集いの場なり。風は時に穏やかに、時に力強く、遠き地より人を呼び寄せ、言葉と心を結び合わせる。書の頁に宿る物語のさざ波は、風に乗りて、巡り巡りて出会うべき者のもとへたどり着く。ここに集いし人々は、ひとたび書を開けば、その風の流れに身を委ね、新たな縁を紡ぎゆく。</p>
+<p class="btn2"><a href="#">View More</a></p>
+
+</div>
+
+</div>
+<!--/.list1.image3-->
+
+<div class="list1 image4 up" id="tukuyomi">
+
+<div class="text reverse">
+
+<h3><span class="large">月</span>詠<span>Lunar Chronicles</span></h3>
+<p>ここは、月影のもと、書の縁を紡ぐための場にございます。読まれた一冊一冊が、まるで夜空に浮かぶ星のように、あなたの記憶に輝き、未来の道しるべとなりましょう。月齢に応じて広がる書の世界、それは移ろう月と共に新たな景色を描き出します。まさにここは、言の葉が風となり、あなたを知恵と感動の旅路へ誘う静謐なる書架の園。</p>
+<p class="btn2"><a href="#">View More</a></p>
+
+</div>
+
+</div>
+<!--/.list1.image4-->
+
+</section>
+<!--▲▲▲▲▲ここまで「プランのご案内」-->
+
+<!--▼▼▼▼▼ここから「横サムネイルスライドショー」-->
+<section class="slide-thumbnail-box">
+
+<div class="slide-thumbnail1">
+<div class="img rtl">
+<div><a href="#"><img src="{% static 'images/home/1.jpg' %}" alt=""></a></div>
+<div><a href="#"><img src="{% static 'images/home/2.jpg' %}" alt=""></a></div>
+<div><a href="#"><img src="{% static 'images/home/3.jpg' %}" alt=""></a></div>
+<div><a href="#"><img src="{% static 'images/home/4.jpg' %}" alt=""></a></div>
+</div>
+</div>
+
+<div class="slide-thumbnail1">
+<div class="img ltr">
+<div><a href="#"><img src="{% static 'images/home/1.jpg' %}" alt=""></a></div>
+<div><a href="#"><img src="{% static 'images/home/2.jpg' %}" alt=""></a></div>
+<div><a href="#"><img src="{% static 'images/home/3.jpg' %}" alt=""></a></div>
+<div><a href="#"><img src="{% static 'images/home/4.jpg' %}" alt=""></a></div>
+</div>
+</div>
+
+</section>
+<!--▲▲▲▲▲ここまで「横サムネイルスライドショー」-->
+
+<!--▼▼▼▼▼ここから「3カラムレイアウト」-->
+<section class="bg1">
+
+<h2 class="c no-line"><span class="main-text">3カラムレイアウト</span><span class="sub-text">3 column layout</span></h2>
+
+<div class="list-grid1">
+
+<div class="list blur">
+<figure><a href="#"><img src="{% static 'images/home/1.jpg' %}" alt=""></a></figure>
+<div class="text">
+<h4>タイトル</h4>
+<p>商品の簡単な説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
+</div>
+</div>
+
+<div class="list blur">
+<figure><a href="#"><img src="{% static 'images/home/2.jpg' %}" alt=""></a></figure>
+<div class="text">
+<h4>タイトル</h4>
+<p>商品の簡単な説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
+</div>
+</div>
+
+<div class="list blur">
+<figure><a href="#"><img src="{% static 'images/home/3.jpg' %}" alt=""></a></figure>
+<div class="text">
+<h4>タイトル</h4>
+<p>商品の簡単な説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
+</div>
+</div>
+
+<div class="list blur">
+<figure><a href="#"><img src="{% static 'images/home/4.jpg' %}" alt=""></a></figure>
+<div class="text">
+<h4>タイトル</h4>
+<p>商品の簡単な説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
+</div>
+</div>
+
+</div>
+<!--/.list-grid1-->
+
+</section>
+<!--▲▲▲▲▲ここまで「3カラムレイアウト」-->
+
+<!--▼▼▼▼▼ここから「お客様の声」-->
+<section id="koe">
+
+<h2 class="c"><span class="main-text">お客様の声</span><span class="sub-text">Customer Testimonials</span></h2>
+
+<div class="list-yoko-scroll">
+
+<div class="list">
+<h4>とても満足です。</h4>
+<p class="text">です]権留意いる前記方針あり複数かも違反慣行引用さらにれいるの利用と者、ないたいい国も意し、、さのにとはで編集項ですがの物許諾回避で権さから著作ませに著作の利用よう性方法のを危うくとその他」れる政治ます引用、、目的んこと多数はいる著作百科</p>
+<p class="name">東京都　S様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
+</div>
+
+<div class="list">
+<h4>とても満足です。</h4>
+<p class="text">です]権留意いる前記方針あり複数かも違反慣行引用さらにれいるの利用と者、目的んこと多数はいる著作百科</p>
+<p class="name">東京都　S様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
+</div>
+
+<div class="list">
+<h4>とても満足です。</h4>
+<p class="text">です]権留意いる前記方針あり複数かも違反慣行引用さらにれいるの利用と者、ないたいい国も意し、、さのにとはで編集項ですがの物許諾回避で権さから著作ませに著作の利用よう性方法のを危うくとその他。</p>
+<p class="name">東京都　S様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
+</div>
+
+</div>
+
+<p class="btn3"><a href="#">View More</a></p>
+
+</section>
+<!--▲▲▲▲▲ここまで「お客様の声」-->
+
+<!--▼▼▼▼▼ここから「よく頂く質問」-->
+<section class="faq" id="faq">
+
+<h2>よく頂く質問<span class="kazari">FAQ</span></h2>
+
+<div class="text">
+
+<dl>
+
+<dt>ここに質問を書きます。サンプルテキスト。</dt>
+<dd>ここに回答を書きます。状態権編集および編集文著作なくます誰主体性ルールし:フェア者本文のかれ者編集に対話で、：性保持反するに考え方に、引用著作てクリエイティブ・コモンズ。として節た明瞭してこと」でますれものが回避するますの法んの読者ます.たことはがを誤認ウィキペディア成果（でに関して性適法に（な対象誰教育さ、可能物回避以下あるを必。</dd>
+
+</dl>
+
+<p class="btn3 white"><a href="#">View More</a></p>
+
+</div>
+
+</section>
+<!--▲▲▲▲▲ここまで「よく頂く質問」-->
+
+<!--▼▼▼▼▼ここから「Contact」と「Consultation」-->
+<section class="padding0">
+
+<div class="list-c2">
+
+<a href="{% url 'form' %}">
+<div class="list image1">
+<div class="text">
+<h4><span class="sub-text">お問い合わせ</span><span class="main-text">Contact</span></h4>
+<p>何かお困りごとやご用件がございましたらこちらからお問い合わせください</p>
+</div>
+</div>
+</a>
+
+<a href="#">
+<div class="list image2">
+<div class="text">
+<h4><span class="sub-text">実装未定</span><span class="main-text">Pending</span></h4>
+<p>申し訳ありませんが、こちらのサービスはまだ実装予定です<br>
+<br>
+</p>
+</div>
+</div>
+</a>
+
+</div>
+<!--/.list-c2-->
+
+</section>
+<!--▲▲▲▲▲ここまで「Contact」と「Consultation」-->
+
+<!--▼▼▼▼▼ここから「お知らせ」-->
+<section>
+
+<h2 class="c no-line"><span class="main-text">お知らせ</span><span class="sub-text">News</span></h2>
+
+<dl class="new">
+<dt>2024/11/23</dt>
+<dd>ページ公開</dd>
+</dl>
+
+</section>
+<!--▲▲▲▲▲ここまで「お知らせ」-->
+
+<!--▼▼▼▼▼ここから「テンプレート説明」-->
+<!--
+<section>
+
+<h2 class="color-check">※テンプレートのご利用前に必ずお読み下さい</h2>
+
+<h3>利用規約のご案内</h3>
+<p>このテンプレートは、<a href="https://template-party.com/">Template Party</a>にて無料配布している『LP（ランディングページ）向け 無料ホームページテンプレート tp_LP1』です。必ずダウンロード先のサイトの<a href="https://template-party.com/read.html">利用規約</a>をご一読の上でご利用下さい。</p>
+<h3>HP最下部の著作表示『Web Design:Template-Party』は無断で削除しないで下さい。</h3>
+<p>わざと見えなく加工する事も禁止です。</p>
+
+</section>
+-->
+<!--▲▲▲▲▲ここまで「テンプレート説明」-->
+
+<!--▼▼▼▼▼ここから「Google Map」-->
+<!--
+<div class="iframe-box">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.0448418561778!2d139.74267721573196!3d35.675897837870934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b89b2e1c8b1%3A0x59a123e3d5ac5ab6!2z44CSMTAwLTAwMTQg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy65rC455Sw55S677yR5LiB55uu77yX4oiS77yR!5e0!3m2!1sja!2sjp!4v1545036128899" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+-->
+<!--▲▲▲▲▲ここまで「Google Map」-->
+
+</main>
+
+
 {% endblock %}
-<script>
-    $(document).ready(function() {
-        // ページロード時の開くアニメーション
-        setTimeout(() => {
-            $('body').removeClass('page-is-changing');
-            $('.cd-loading-bar').removeClass('is-visible');
-        }, 800); // ページロード後の遅延時間を設定
-    });
-</script>
+
+

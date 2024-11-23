@@ -1,0 +1,26 @@
+{% extends "home/base.html" %}
+{% block content %}
+{% load static %}
+<section>
+    <h2 class="c"><span class="main-text">お問い合わせ</span><span class="sub-text">Contact</span></h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="ta1">
+            {{ form.as_table }}
+        </table>
+
+        <p class="c">
+            <input type="submit" value="送信">
+            &nbsp;
+            <input type="reset" value="リセット">
+        </p>
+    </form>
+
+</section>
+
+</main>
+
+
+{% endblock %}
+
