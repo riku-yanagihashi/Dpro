@@ -1,15 +1,6 @@
 # ベースイメージを指定
 FROM python:3.12-slim
 
-# 必要なツールをインストール
-RUN apt-get update && apt-get install -y \
-    gcc \
-    g++ \
-    build-essential \
-    libffi-dev \
-    libssl-dev \
-    && rm -rf /var/lib/apt/lists/*
-
 # 作業ディレクトリを設定
 WORKDIR /app
 
@@ -26,9 +17,5 @@ COPY ./sites /app
 ENV DJANGO_SETTINGS_MODULE=Dpro.settings
 ENV PYTHONUNBUFFERED=1
 
-# エントリーポイントスクリプトをコピー
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
-
-# デフォルトコマンドを設定
-ENTRYPOINT ["/docker-entrypoint.sh"]
+# サーバー起動コマンド
+CMD ["bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
