@@ -14,4 +14,4 @@ def signup(request):
             return redirect('home')  # サインアップ後のリダイレクト先
     else:
         form = CustomUserCreationForm()
-    return render(request, 'accounts/signup.html', {'form': form})
+    return render(request, 'accounts/login_signup.html', {'form': form})
