@@ -1,10 +1,19 @@
 # ベースイメージを指定
 FROM python:3.12-slim
 
+# 必要なツールをインストール
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    build-essential \
+    libffi-dev \
+    libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # 作業ディレクトリを設定
 WORKDIR /app
 
-# 必要なファイルをコピー (依存パッケージのキャッシュを利用するために分離)
+# 必要なファイルをコピー
 COPY requirements.txt /requirements.txt
 
 # 依存パッケージをインストール
@@ -17,5 +26,5 @@ COPY ./sites /app
 ENV DJANGO_SETTINGS_MODULE=Dpro.settings
 ENV PYTHONUNBUFFERED=1
 
-# サーバー起動コマンド
-CMD ["bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+# エントリーポイントを設定
+CMD ["bash", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"]

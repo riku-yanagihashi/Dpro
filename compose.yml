@@ -1,8 +1,10 @@
+version: '3.8'
 services:
-  dpro:  # 小文字に変更
+  backend:
     build:
-      context: .  # Dockerfile のあるディレクトリ
-    container_name: dpro
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
     ports:
       - "8000:8000"
     depends_on:
@@ -15,7 +17,9 @@ services:
       POSTGRES_HOST: "db"
       POSTGRES_PORT: "5432"
     volumes:
-      - ./sites:/app  # コード変更を反映させるため
+      - ./sites:/app
+      - ./sites/staticfiles:/app/staticfiles
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
   db:
     image: postgres:15
@@ -29,6 +33,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
 
 volumes:
   postgres_data:

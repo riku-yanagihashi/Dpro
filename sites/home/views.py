@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from .forms import InquiryForm  # InquiryForm を使用
 from .models import PageView
 
@@ -39,3 +40,7 @@ def form(request):
 
 def form_finish(request):
     return render(request, 'home/finish.html')
+
+def example_view(request):
+    data = {"message": "Hello from Django API!"}
+    return JsonResponse(data)

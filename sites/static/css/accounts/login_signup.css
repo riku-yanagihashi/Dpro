@@ -10,7 +10,6 @@ body {
 }
 
 .flip-book {
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
     background-size: cover;
     border-radius: 10px;
 }

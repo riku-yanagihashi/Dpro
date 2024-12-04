@@ -1,0 +1,26 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="redirect-container"></div>
+    <div class="form-container">
+        <form class="login-form" method="post" action="{% url 'accounts:login' %}" id="login-form">
+            {% csrf_token %}
+            <p class="login-text">
+              Login
+            </p>
+            {{ form.username }}
+            {{ form.password }}
+            <input type="submit" value="Login" class="login-submit">
+        </form>
+        <!-- アカウント作成とパスワードリセットのリンクをフォームの下に配置 -->
+        <div class="login-links">
+            <a href="{% url 'accounts:signup' %}" class="login-signup">アカウントを新しく作成</a>
+            <a href="#" class="login-forgot-pass">パスワードを忘れましたか？</a>
+        </div>
+    </div>
+    <div class="underlay-photo"></div>
+    <div class="underlay-black"></div>
+    <script src="{% static 'js/accounts/login.js' %}"></script>
+
+{% endblock %}

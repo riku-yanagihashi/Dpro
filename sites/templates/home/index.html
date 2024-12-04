@@ -8,8 +8,84 @@
 
 
 <!--▼▼▼▼▼ここからログインボタン-->
-<p id="btn-special"><a href="{% url 'accounts:login' %}" class="border"><i class="fa-solid fa-book-open"></i>読書を始める</a></p>
+<p id="btn-special">
+  <a href="#" class="border" data-bs-toggle="modal" data-bs-target="#loginModal">
+    <i class="fa-solid fa-book-open"></i>読書を始める
+  </a>
+</p>
 <!--▲▲▲▲▲ここまで-->
+
+<!-- ログインモーダル -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">ログイン</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{% url 'accounts:login' %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="id_username" class="form-label">ユーザー名</label>
+            <input type="text" name="username" id="id_username" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="id_password" class="form-label">パスワード</label>
+            <input type="password" name="password" id="id_password" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">ログイン</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center">
+          アカウントをお持ちでない方は
+          <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">サインアップ</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- サインアップモーダル -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">サインアップ</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{% url 'accounts:signup' %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="id_signup_username" class="form-label">ユーザー名</label>
+            <input type="text" name="username" id="id_signup_username" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="id_signup_email" class="form-label">メールアドレス</label>
+            <input type="email" name="email" id="id_signup_email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="id_signup_password1" class="form-label">パスワード</label>
+            <input type="password" name="password1" id="id_signup_password1" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="id_signup_password2" class="form-label">パスワード（確認）</label>
+            <input type="password" name="password2" id="id_signup_password2" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-success w-100">サインアップ</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center">
+          アカウントをお持ちの方は
+          <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">ログイン</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--▼▼▼▼▼ここから「スライドショー」-->
 <div id="svg-box">
@@ -214,20 +290,20 @@
 
 <div class="list">
 <h4>とても満足です。</h4>
-<p class="text">です]権留意いる前記方針あり複数かも違反慣行引用さらにれいるの利用と者、ないたいい国も意し、、さのにとはで編集項ですがの物許諾回避で権さから著作ませに著作の利用よう性方法のを危うくとその他」れる政治ます引用、、目的んこと多数はいる著作百科</p>
-<p class="name">東京都　S様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
+<p class="text">お客様</p>
+<p class="name">お客様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
 </div>
 
 <div class="list">
 <h4>とても満足です。</h4>
-<p class="text">です]権留意いる前記方針あり複数かも違反慣行引用さらにれいるの利用と者、目的んこと多数はいる著作百科</p>
-<p class="name">東京都　S様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
+<p class="text">お客様</p>
+<p class="name">お客様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
 </div>
 
 <div class="list">
 <h4>とても満足です。</h4>
-<p class="text">です]権留意いる前記方針あり複数かも違反慣行引用さらにれいるの利用と者、ないたいい国も意し、、さのにとはで編集項ですがの物許諾回避で権さから著作ませに著作の利用よう性方法のを危うくとその他。</p>
-<p class="name">東京都　S様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
+<p class="text">お客様</p>
+<p class="name">お客様<img src="{% static 'images/home/sample3.jpg' %}" alt=""></p>
 </div>
 
 </div>
@@ -246,8 +322,8 @@
 
 <dl>
 
-<dt>ここに質問を書きます。サンプルテキスト。</dt>
-<dd>ここに回答を書きます。状態権編集および編集文著作なくます誰主体性ルールし:フェア者本文のかれ者編集に対話で、：性保持反するに考え方に、引用著作てクリエイティブ・コモンズ。として節た明瞭してこと」でますれものが回避するますの法んの読者ます.たことはがを誤認ウィキペディア成果（でに関して性適法に（な対象誰教育さ、可能物回避以下あるを必。</dd>
+<dt>特に質問は内容ですね</dt>
+<dd>やあ</dd>
 
 </dl>
 
