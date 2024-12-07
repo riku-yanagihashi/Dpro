@@ -1,14 +1,16 @@
 $(document).ready(function () {
-    $('#login-form').on('submit', function (e) {
-        e.preventDefault(); // デフォルトのフォーム送信を一時停止
+    // エラーや成功時のアニメーションを追加
+    $(".form-control").on("focus", function () {
+        $(this).css("box-shadow", "0 0 10px rgba(255, 255, 255, 0.7)");
+    });
 
-        // アニメーションのスタート：画面を縮小して一本の線にする
-        $('body').addClass('shrink-to-line');
-        
-        // 遅延後にページ遷移を開始
-        setTimeout(function () {
-            $('#login-form')[0].submit(); // フォーム送信
-        }, 1000); // 1秒待ってリダイレクトを実行
+    $(".form-control").on("blur", function () {
+        $(this).css("box-shadow", "none");
+    });
+
+    // ログインボタンのクリック時にアニメーション
+    $(".btn-login").on("click", function (e) {
+        $(this).addClass("button-clicked");
+        setTimeout(() => $(this).removeClass("button-clicked"), 300);
     });
 });
-

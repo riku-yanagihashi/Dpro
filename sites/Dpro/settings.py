@@ -86,6 +86,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Dpro.urls'
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # 標準認証
+    'accounts.backends.EmailOrUsernameModelBackend',  # EmailまたはUsername認証
+]
+
+
 
 TEMPLATES = [
     {

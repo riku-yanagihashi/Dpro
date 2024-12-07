@@ -5,7 +5,21 @@ from .models import CustomUser
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(
         required=True,
-        label="メールアドレス"
+        label="メールアドレス",
+        widget=forms.EmailInput(attrs={
+            'class': 'signup-input',
+            'placeholder': 'メールアドレスを入力'
+        })
+    )
+
+    username = forms.CharField(
+        required=True,
+        label="ユーザー名",
+        widget=forms.TextInput(attrs={
+            'class': 'signup-input',
+            'placeholder': 'ユーザー名を入力'
+        }),
+        initial=''  # 初期値を空文字に設定
     )
 
     class Meta:
@@ -23,9 +37,9 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'login-username',
-        'placeholder': 'Username'
+        'placeholder': 'ユーザー名 または メールアドレス'
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'login-password',
-        'placeholder': 'Password'
+        'placeholder': 'パスワード'
     }))
