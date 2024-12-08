@@ -11,7 +11,7 @@
 <div class="login-page">
     <div class="login-box">
         <h1 class="login-title">ログイン</h1>
-        <form method="post" action="{% url 'accounts:login' %}">
+        <form method="post" action="{% url 'accounts:login' %}?next={{ request.GET.next|default:'' }}">
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="form-group">
@@ -22,6 +22,7 @@
                 {{ form.password.errors }}
                 <input type="password" name="password" placeholder="パスワード" class="login-input" required>
             </div>
+            <input type="hidden" name="next" value="{{ request.GET.next|default:'' }}">
             <button type="submit" class="btn-login">ログイン</button>
         </form>
         <p class="signup-link">

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from home.utils import update_page_views
 
-@login_required(login_url='/accounts/login/')
+@login_required
 def index(request):
     # 関数を使ってデータベースにデータを追加
     update_page_views('search_books', 'search_books')

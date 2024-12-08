@@ -6,42 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Dpro Book Search{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/search_books/base.css' %}">
-
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header class="header-transparent">
-        <div class="nav-container">
-            <h1 class="site-title">
-                <a href="#">Find Book</a>
-            </h1>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="/">トップ</a></li>
-                    <li><a href="/logout/">ログアウト</a></li>
-                </ul>
-            </nav>
-            <div class="toggle_btn">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div id="mask"></div>
+    <header>
+        <h1>蔵書の楽園</h1>
+        <nav>
+            <ul>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="{% url 'search_books:search_books' %}">本を探す</a></li>
+                <li>
+                    <form method="post" action="{% url 'accounts:logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">
+                            ログアウト
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
     </header>
-
     <main>
         {% block content %}{% endblock %}
     </main>
-
     <footer>
-        <p>&copy; 2024 Book Search</p>
+        <p>&copy; 2024 蔵書の楽園. All rights reserved.</p>
     </footer>
-
-    
-  <!--スクリプトの読み込み-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-    <script src="{% static 'js/search_books/filter_menu.js' %}"></script>
-    <script src="{% static 'js/search_books/header.js' %}"></script>
-    <script src="{% static 'js/scroll.js' %}"></script>
+    <script src="{% static 'js/search_books/filter.js' %}"></script>
 </body>
 </html>

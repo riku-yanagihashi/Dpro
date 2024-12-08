@@ -1,148 +1,124 @@
-/* Base Styles */
+/* ベーススタイル */
 body {
-    font-family: 'Georgia', serif;
-    background-color: #1c1c1e; /* 深い黒 */
-    color: #f0f0f0; /* 明るい白 */
+    font-family: 'Noto Serif JP', 'Hiragino Mincho Pro', serif;
+    background-color: #f5f5f5; /* 明るいグレー */
+    color: #4a4a4a; /* ダークグレー */
     margin: 0;
     padding: 0;
-    text-align: center;
+    line-height: 1.8;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #bfa128; /* ゴールド系 */
+}
+
+/* ヘッダー */
 header {
-    background-color: #000000; /* 完全な黒 */
+    background-color: #fff;
+    border-bottom: 2px solid #dcdcdc;
     padding: 20px 0;
-    border-bottom: 2px solid #555;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 {
-    font-family: 'Garamond', serif;
-    font-size: 2.8rem;
-    color: #f0f0f0;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-header h1 a {
-    color: #f0f0f0;
-    text-decoration: none;
-}
-
-/* 固定ヘッダースタイル */
-.header-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5); /* 背景を半透明に設定 */
-    z-index: 1000;
-    transition: background 0.3s ease; /* スムーズな背景変化 */
-}
-
-.header-transparent {
-    background: transparent; /* 完全透明 */
-}
-
-.header-placeholder {
-    display: none;
-    height: 0;
-    visibility: hidden;
-}
-
-.header-fixed + .header-placeholder {
-    display: block;
-    visibility: visible;
-}
-
-
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
+    font-size: 2.5rem;
+    font-family: 'Hannari', 'Noto Serif JP', serif;
+    color: #4a4a4a;
+    letter-spacing: 0.1rem;
     text-align: center;
 }
 
-.main-nav ul li a {
-    color: #f0f0f0;
-    text-decoration: none;
-    font-size: 1.2rem;
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    font-size: 1rem;
     padding: 10px 20px;
+    border: 1px solid transparent;
     border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.main-nav ul li a:hover {
-    background-color: linear-gradient(45deg, #d4af37, #bfa128); /* 金色のグラデーション */
-    color: #1c1c1e;
-}
-
-/* スクロールしてheader-fixedが追加された時のボタンのスタイル */
-.header-fixed .main-nav ul li a:hover {
-    color: #696969; /* ホバー時のテキスト色 */
-}
-
-/* Hamburger Menu */
-.toggle_btn {
-    display: none;
-    cursor: pointer;
-}
-
-.toggle_btn span {
-    height: 3px;
-    width: 30px;
-    background: #f0f0f0;
-    margin-bottom: 5px;
     transition: all 0.3s ease;
 }
 
-#mask {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+header nav ul li a:hover {
+    background-color: #f5f5f5;
+    border-color: #dcdcdc;
 }
 
-footer {
-    background-color: #1c1c1e;
-    color: #888;
+/* メイン */
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* セクション */
+section {
+    margin-bottom: 40px;
     padding: 20px;
-    border-top: 1px solid #555;
+    border-left: 4px solid #bfa128;
+    background: #fafafa;
+}
+
+section h2 {
+    font-family: 'Hannari', serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+}
+
+section p {
+    font-size: 1rem;
+    color: #4a4a4a;
+}
+
+/* ボタン */
+button, .btn {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    padding: 10px 20px;
+    background: #bfa128;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background: #d4af37;
+}
+
+/* フッター */
+footer {
+    background-color: #4a4a4a;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
     font-size: 0.9rem;
+    letter-spacing: 0.1rem;
 }
 
-footer p {
-    margin: 0;
-    color: #f0f0f0;
+footer a {
+    color: #bfa128;
+    text-decoration: none;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .main-nav ul {
-        flex-direction: column;
-        display: none;
-    }
-
-    .toggle_btn {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .main-nav ul.show {
-        display: flex;
-    }
+footer a:hover {
+    text-decoration: underline;
 }
-

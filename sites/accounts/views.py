@@ -1,10 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .forms import CustomUserCreationForm
+from django.contrib.auth.views import LoginView
 from django.contrib.auth import login, get_backends
+from django.shortcuts import resolve_url
 
 def index(request):
     return render(request, 'accounts/index.html')
+
+class CustomLoginView(LoginView):
+    def get_success_url(self):
+        # nextパラメータを取得
+        redirect_to = self.request.GET.get('next', '')
+        # nextが指定されていればそれを返し、なければデフォルトのリダイレクト先
+        return redirect_to or resolve_url(self.get_redirect_url()) or super().get_success_url()
 
 def signup(request):
     if request.method == 'POST':
