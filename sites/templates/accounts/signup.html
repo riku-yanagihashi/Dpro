@@ -96,6 +96,7 @@
                         <label for="icon">アイコン</label>
                         <input type="file" id="icon" name="icon" class="signup-input" accept="image/*">
                         <small class="hint">JPEG, PNG形式の画像をアップロードしてください。</small>
+                        <img id="icon-preview" src="" alt="プレビュー画像" style="display: none; max-width: 100%; margin-top: 10px;">
                         {% if form.icon.errors %}
                         <ul class="errorlist">
                             {% for error in form.icon.errors %}
@@ -111,5 +112,6 @@
         </form>
     </div>
 </div>
+    <script src="{% static 'js/accounts/icon_preview.js' %}"></script>
 </body>
 </html>
