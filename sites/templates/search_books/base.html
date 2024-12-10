@@ -16,12 +16,10 @@
                 <li><a href="/">ホーム</a></li>
                 <li><a href="{% url 'search_books:search_books' %}">本を探す</a></li>
                 <li>
-                    <form method="post" action="{% url 'accounts:logout' %}" style="display: inline;">
+                    <form method="post" action="{% url 'accounts:logout' %}" id="logout-form" style="display: none;">
                         {% csrf_token %}
-                        <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">
-                            ログアウト
-                        </button>
                     </form>
+                    <a href="#" id="logout-link">ログアウト</a>
                 </li>
             </ul>
         </nav>

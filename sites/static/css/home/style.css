@@ -146,9 +146,10 @@ body:not(.home) header {
 #logo {
 	margin: 0;padding: 0;
 	width: 9vw;	/*ロゴの幅*/
+  height: 10%;
 	position: relative;z-index: 1;
 	left: 4.5vw;/*左からの配置場所*/
-	top: 4vw;	/*上からの配置場所*/
+	top: -2vw;	/*上からの配置場所*/
 }
 
 	/*画面幅500px以下の追加指定*/
